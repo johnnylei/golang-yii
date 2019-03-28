@@ -1,6 +1,5 @@
 package base
 
-
 type EventContainer interface {
 	GetEvent() EventInterface
 }
