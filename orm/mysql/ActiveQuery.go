@@ -167,7 +167,8 @@ func (activeQuery *ActiveQuery) buildSql() string  {
 	if activeQuery.where != nil {
 		condition := activeQuery.buildCondition(activeQuery.where)
 		if condition != "" {
-			activeQuery.sqlTemplate = fmt.Sprintf("%s WHERE %s", activeQuery.sqlTemplate, condition)
+			_condition := []rune(condition)
+			activeQuery.sqlTemplate = fmt.Sprintf("%s WHERE %s", activeQuery.sqlTemplate, string(_condition[1:len(_condition) - 1]))
 		}
 	}
 
@@ -219,6 +220,11 @@ func (activeQuery *ActiveQuery) buildField() string  {
 }
 
 func (activeQuery *ActiveQuery) buildCondition(where interface{}) string  {
+	// 为string时的处理方式
+	if where, ok := where.(string); ok {
+		return fmt.Sprintf("(%s)", where)
+	}
+
 	// 为函数时的处理方式
 	if handler, ok := where.(func(*ActiveQuery) string); ok {
 		ret := handler(activeQuery)
@@ -439,6 +445,11 @@ func (activeQuery *ActiveQuery) buildCondition(where interface{}) string  {
 }
 
 func (activeQuery *ActiveQuery) buildConditionTemplate(where interface{}) string  {
+	// 为string时的处理方式
+	if where, ok := where.(string); ok {
+		return fmt.Sprintf("(%s)", where)
+	}
+
 	// 为函数时的处理方式
 	if handler, ok := where.(func(*ActiveQuery) string); ok {
 		ret := handler(activeQuery)
