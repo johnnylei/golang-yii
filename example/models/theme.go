@@ -10,6 +10,7 @@ type Theme struct {
 	Id int `field:"id" primary`
 	Name string `field:"name"`
 	Sex string `field:"sex"`
+	UserUuid string `field:"user_uuid"`
 }
 
 func NewDefaultTheme() *Theme  {

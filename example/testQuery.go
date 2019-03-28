@@ -233,9 +233,9 @@ func TestQuery()  {
 				},
 			},
 		}).
-		LeftJoin("user t2", "t1.`user_id`=t2.`id`").
-		InnerJoin("user t2", "t1.`user_id`=t2.`id`").
-		RightJoin("user t2", "t1.`user_id`=t2.`id`").
+		LeftJoin("user t2", "t1.`user_uuid`=t2.`uuid`").
+		InnerJoin("user t3", "t1.`user_uuid`=t3.`uuid`").
+		RightJoin("user t4", "t1.`user_uuid`=t4.`uuid`").
 		OrderBy(map[string]string{
 			"id":mysql.DESC,
 			"name":mysql.ASC,
