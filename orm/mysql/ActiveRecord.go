@@ -1,8 +1,8 @@
 package mysql
 
 import (
-	"icode.baidu.com/baidu/searchbox/wechat_api/libraries/base"
-	"icode.baidu.com/baidu/searchbox/wechat_api/libraries/orm"
+	"github.com/johnnylei/golang-yii/base"
+	"github.com/johnnylei/golang-yii/orm"
 	"reflect"
 )
 

@@ -2,9 +2,9 @@ package mysql
 
 import (
 	"fmt"
-	"icode.baidu.com/baidu/searchbox/wechat_api/libraries/base"
-	"icode.baidu.com/baidu/searchbox/wechat_api/libraries/orm"
-	"icode.baidu.com/baidu/searchbox/wechat_api/libraries/utils"
+	"github.com/johnnylei/golang-yii/base"
+	"github.com/johnnylei/golang-yii/orm"
+	"github.com/johnnylei/golang-yii/utils"
 	"math/rand"
 	"strconv"
 	"strings"

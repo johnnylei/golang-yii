@@ -3,7 +3,7 @@ package mysql
 import (
 	"errors"
 	"fmt"
-	"icode.baidu.com/baidu/searchbox/wechat_api/libraries/utils"
+	"github.com/johnnylei/golang-yii/utils"
 	"reflect"
 	"strings"
 )
