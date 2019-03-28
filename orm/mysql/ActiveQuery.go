@@ -53,7 +53,6 @@ func (activeQuery *ActiveQuery) Alias(alias string) orm.ActiveQueryInterface  {
 func (activeQuery *ActiveQuery) One() map[string]string  {
 	base.Trigger(START_FETCH_ONE, activeQuery)
 	activeQuery.buildSql()
-	fmt.Println(activeQuery.sqlTemplate)
 	command := NewDefaultCommand()
 	data := command.Query(activeQuery.sqlTemplate, activeQuery.whereParams, true)
 	base.Trigger(END_FETCH_ONE, activeQuery)
