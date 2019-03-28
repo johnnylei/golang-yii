@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -117,4 +118,13 @@ func ConvertFloat64(data interface{}) float64  {
 	}
 
 	return ret
+}
+
+func JsonEncode(data interface{}) string  {
+	byteData, err := json.Marshal(data)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(byteData)
 }

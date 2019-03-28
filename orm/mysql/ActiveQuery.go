@@ -53,6 +53,7 @@ func (activeQuery *ActiveQuery) Alias(alias string) orm.ActiveQueryInterface  {
 func (activeQuery *ActiveQuery) One() map[string]string  {
 	base.Trigger(START_FETCH_ONE, activeQuery)
 	activeQuery.buildSql()
+	fmt.Println(activeQuery.sqlTemplate)
 	command := NewDefaultCommand()
 	data := command.Query(activeQuery.sqlTemplate, activeQuery.whereParams, true)
 	base.Trigger(END_FETCH_ONE, activeQuery)
@@ -168,7 +169,8 @@ func (activeQuery *ActiveQuery) buildSql() string  {
 		condition := activeQuery.buildCondition(activeQuery.where)
 		if condition != "" {
 			_condition := []rune(condition)
-			activeQuery.sqlTemplate = fmt.Sprintf("%s WHERE %s", activeQuery.sqlTemplate, string(_condition[1:len(_condition) - 1]))
+			condition = string(_condition[1:len(_condition) - 1])
+			activeQuery.sqlTemplate = fmt.Sprintf("%s WHERE %s", activeQuery.sqlTemplate, condition)
 		}
 	}
 
